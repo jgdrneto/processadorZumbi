@@ -1,0 +1,31 @@
+MEM 4
+MEM 4
+MEM 1
+
+--Memórias--
+
+--Leitura do 1º número--
+LDA 1
+--Indo para subrotina--
+JMP 14
+LDA 4
+HLT
+--Inicio da subrotina--
+LDA 4
+ADD 1
+STA 4
+--Acressentando +1--
+LDA 5
+ADD 3
+STA 5
+--Comparando com 2º numero--
+LDA 2
+--Complemento de 2--
+NOT
+ADD 3
+--Subtraindo pelo 2º número
+ADD 5
+--Se der zero, acaba subrotina--
+JZ 11
+--Se não der zero, continua subrotina
+JMP 14

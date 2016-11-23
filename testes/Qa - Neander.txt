@@ -1,0 +1,12 @@
+MEM 2
+MEM 3
+
+--Começando execução
+--Lendo Valor do endereço de memória 1 
+LDA 1
+--Adicionando valor presente me A com o endereço de memória 2
+ADD 2
+ADD 2
+--Gravando o valor acumulado em A no endereço de memória 3
+STA 3
+HLT

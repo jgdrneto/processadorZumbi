@@ -1,0 +1,39 @@
+MEM 2
+MEM 4
+MEM 3
+MEM 1
+--Memória--
+
+--Lendo 1º número----
+LDA 1
+--Gravando número 
+STA 5
+--Complemento de 2--
+NOT
+ADD 4
+--Somando 2º número--
+ADD 2
+--Verificando se o 1º é maior--
+JN 23
+--Se o 2º é maior--
+LDA 2
+STA 5
+JMP 27
+--Se o 1º é maior--
+LDA 1
+STA 5
+--Verificando 3º número--
+--Complemento de 2--
+NOT
+ADD 4
+--Adicionando o 3º numero--
+ADD 3
+--Verificando se o anterior é maior--
+JN 38
+--Se o 3º número é maior--
+LDA 3
+STA 5
+HLT
+--Se o anterior é maior
+LDA 5
+HLT
