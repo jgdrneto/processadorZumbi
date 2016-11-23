@@ -12,8 +12,6 @@ public class Buscar extends Thread {
 	@Override
 	public void run() {
 		
-		System.out.println("run Buscar");
-		
 		pN.Busca();
 	}
 	

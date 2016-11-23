@@ -29,7 +29,9 @@ public class principal {
 		processadorN.start();
 		*/
 		
-		InterpretadorNeander n = new InterpretadorNeander("testes/Qa - Neander.txt");
+		String nome = "testes/Qb - Neander.txt";
+		
+		InterpretadorNeander n = new InterpretadorNeander(nome);
 				
 		ProcessadorNeander pN = new ProcessadorNeander(n.getInstrucoes(), 10);
 		
@@ -39,18 +41,17 @@ public class principal {
 		
 		while(!pN.parar){
 			
-			System.out.println(pN.instrucoes.get(0));
-			
 			buscarInstrucao = new Buscar(pN); 
 			
 			executar = new Executar(pN);
 			
 			buscarInstrucao.start();
 			executar.start();
-	
+			
 			while(buscarInstrucao.isAlive() || executar.isAlive()){
 				//Esperando as threads morrerem para poder executá-las denovo
 			}
+			
 			
 		}
 		

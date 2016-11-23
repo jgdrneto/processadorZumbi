@@ -1,6 +1,6 @@
+MEM 1
 MEM 2
-MEM 4
-MEM 3
+MEM 6
 MEM 1
 --Memória--
 

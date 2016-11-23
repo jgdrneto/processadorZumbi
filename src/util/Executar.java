@@ -13,8 +13,6 @@ public class Executar extends Thread{
 	@Override
 	public void run() {
 		
-		System.out.println("run Executar");
-		
 		pN.interpretarInstrucao();
 		
 	}	

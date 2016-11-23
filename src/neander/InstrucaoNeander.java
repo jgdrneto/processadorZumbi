@@ -5,6 +5,9 @@ import modelo.Instrucao;
 public class InstrucaoNeander extends Instrucao{
 	public enum CodNeander{
 		MEM,
+		SUB,
+		XOR,
+		CMP,
 		NOP,
 		STA,
 		LDA,

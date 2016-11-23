@@ -26,6 +26,7 @@ public class ProcessadorNeander extends Processador{
 	}
 	
 	public synchronized void  Busca(){
+		/*
 		while (permissao == false) {
 	        try {
 	            //wait for Producer to put value
@@ -34,10 +35,11 @@ public class ProcessadorNeander extends Processador{
 	    }
 		
 		permissao=false;
+		*/
 		
 		i = instrucoes.get(CP++);
 		
-		notifyAll();
+		//notifyAll();
 		
 	}
 	
@@ -49,17 +51,20 @@ public class ProcessadorNeander extends Processador{
 				nInstrucoes.add(i+1, new InstrucaoNeander(CodNeander.NOP));
 			}
 			
-			if(nInstrucoes.get(i).getCodigo()==CodNeander.JMP||
-			   nInstrucoes.get(i).getCodigo()==CodNeander.JN ||
-			   nInstrucoes.get(i).getCodigo()==CodNeander.JZ){
+			if(nInstrucoes.get(i+1).getCodigo()==CodNeander.JMP||
+			   nInstrucoes.get(i+1).getCodigo()==CodNeander.JN ||
+			   nInstrucoes.get(i+1).getCodigo()==CodNeander.JZ){
 			   
-			   nInstrucoes.add(i+1, new InstrucaoNeander(CodNeander.NOP));
+			   //nInstrucoes.add(i+1, new InstrucaoNeander(CodNeander.NOP));
+			   
+			   //i++;
 			}
 		}
-		
+		/*
 		for(InstrucaoNeander i : nInstrucoes){
 			System.out.println(i.toString());
 		}
+		*/
 		
 		return nInstrucoes;
 	}
@@ -73,14 +78,15 @@ public class ProcessadorNeander extends Processador{
 	}
 	
 public synchronized void interpretarInstrucao(){
-		
+		/*
 		while (this.permissao == true) {
 	        try {
 	            //wait for Consumer to get value
 	            wait();
 	        } catch (InterruptedException e) { }
 	    }
-		
+		*/
+	
 		if(i!=null){
 		
 			switch(this.i.getCodigo()){
@@ -104,6 +110,11 @@ public synchronized void interpretarInstrucao(){
 					verificarRegistradoresDeEstado();
 		
 				break;
+				case SUB:
+					this.getRegistradores().set(0, this.getRegistradores().get(0) - this.getMemoria().get(this.i.getEndereco()));
+					
+					verificarRegistradoresDeEstado();
+				break;		
 				case OR:
 					this.getRegistradores().set(0, this.getRegistradores().get(0) | this.getMemoria().get(this.i.getEndereco()));
 		
@@ -119,8 +130,21 @@ public synchronized void interpretarInstrucao(){
 		
 					verificarRegistradoresDeEstado();
 				break;
+				case XOR:
+					this.getRegistradores().set(0, this.getRegistradores().get(0) ^ this.getMemoria().get(this.i.getEndereco()));
+					
+					verificarRegistradoresDeEstado();
+				break;
+				case CMP:
+					if(this.getRegistradores().get(0)==this.getMemoria().get(this.i.getEndereco())){
+						this.zero = true;
+					}
+					if((this.getRegistradores().get(0)-this.getMemoria().get(this.i.getEndereco()))<0){
+						this.negativo =true;
+					}
+				break;	
 				case JMP:
-					this.CP = this.i.getEndereco();
+					decodificarEndereco();
 				break;
 				case JN:
 					if(this.negativo){
@@ -142,18 +166,18 @@ public synchronized void interpretarInstrucao(){
 			}
 		}
 		
-		this.permissao=true;
+		//this.permissao=true;
 		
-		notifyAll();
+		//notifyAll();
 	}
 
 	private synchronized void decodificarEndereco() {
 		
 		boolean entrou=false;
 		
-		for(int j=0;j<this.instrucoes.size();j++){
-			if(this.instrucoes.get(j).getLinha()==this.CP){
-				this.CP=j;
+		for(int j=0;j<instrucoes.size();j++){
+			if(instrucoes.get(j).getLinha()==i.getEndereco()){
+				CP=j;
 				entrou=true;
 			}
 		}
