@@ -2,42 +2,27 @@ package principal;
 
 import javax.swing.JFileChooser;
 
-import neander.InterpretadorNeander;
-import neander.ProcessadorNeander;
-import util.Buscar;
-import util.Executar;
+import pipeline.Buscar;
+import pipeline.Executar;
+import zumbi.InterpretadorZumbi;
+import zumbi.ProcessadorZumbi;
 
 
 public class principal {
 
 	public static void main(String[] args) {
 		
-		// TODO Auto-generated method stub
-		
-		//Iniguaçu
-		
-		/*
 		JFileChooser abrirArquivo = new JFileChooser();
 
 		abrirArquivo.showOpenDialog(null);
-
-		System.out.println(abrirArquivo.getSelectedFile().getPath());
 		
-		InterpretadorNeander n = new InterpretadorNeander(abrirArquivo.getSelectedFile().getPath());
-		processadorNeander processadorN = new processadorNeander(n.getInstrucoes(), 10);
-
-		processadorN.start();
-		*/
-		
-		String nome = "testes/Qb - Neander.txt";
-		
-		InterpretadorNeander n = new InterpretadorNeander(nome);
+		InterpretadorZumbi n = new InterpretadorZumbi(abrirArquivo.getSelectedFile().getPath());
 				
-		ProcessadorNeander pN = new ProcessadorNeander(n.getInstrucoes(), 10);
+		ProcessadorZumbi pN = new ProcessadorZumbi(n.getInstrucoes(), 10);
 		
-		Buscar buscarInstrucao; // new Buscar(pN);
+		Buscar buscarInstrucao;
 		
-		Executar executar; //=  new Executar(pN);
+		Executar executar;
 		
 		while(!pN.parar){
 			
@@ -51,8 +36,7 @@ public class principal {
 			while(buscarInstrucao.isAlive() || executar.isAlive()){
 				//Esperando as threads morrerem para poder executá-las denovo
 			}
-			
-			
+
 		}
 		
 		System.out.println("Acumulador: " + pN.getRegistradores().get(0));

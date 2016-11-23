@@ -1,22 +1,22 @@
-package neander;
+package zumbi;
 
 import java.util.List;
 
 import modelo.Processador;
-import neander.InstrucaoNeander.CodNeander;
+import zumbi.InstrucaoZumbi.CodNeander;
 
-public class ProcessadorNeander extends Processador{
+public class ProcessadorZumbi extends Processador{
 	
 	public boolean negativo=false;
 	public boolean zero=false;
 	public boolean parar=false;
 	public boolean permissao = true;
 	
-	public List<InstrucaoNeander> instrucoes;
-	public InstrucaoNeander i;
+	public List<InstrucaoZumbi> instrucoes;
+	public InstrucaoZumbi i;
 	public int CP;	
 	
-	public ProcessadorNeander(List<InstrucaoNeander> nInstrucoes, int memoria) {
+	public ProcessadorZumbi(List<InstrucaoZumbi> nInstrucoes, int memoria) {
 		
 		super(memoria+1, 1);
 
@@ -43,12 +43,12 @@ public class ProcessadorNeander extends Processador{
 		
 	}
 	
-	private List<InstrucaoNeander> resolverConflitosDados(List<InstrucaoNeander> nInstrucoes) {
+	private List<InstrucaoZumbi> resolverConflitosDados(List<InstrucaoZumbi> nInstrucoes) {
 		
 		for(int i=0;i<nInstrucoes.size()-1;i++){
 			
 			if(nInstrucoes.get(i).getEndereco()!=0 && nInstrucoes.get(i).getEndereco()==nInstrucoes.get(i+1).getEndereco()){
-				nInstrucoes.add(i+1, new InstrucaoNeander(CodNeander.NOP));
+				nInstrucoes.add(i+1, new InstrucaoZumbi(CodNeander.NOP));
 			}
 			
 			if(nInstrucoes.get(i+1).getCodigo()==CodNeander.JMP||
@@ -69,11 +69,11 @@ public class ProcessadorNeander extends Processador{
 		return nInstrucoes;
 	}
 
-	public List<InstrucaoNeander> getInstrucoes() {
+	public List<InstrucaoZumbi> getInstrucoes() {
 		return instrucoes;
 	}
 
-	public void setInstrucoes(List<InstrucaoNeander> instrucoes) {
+	public void setInstrucoes(List<InstrucaoZumbi> instrucoes) {
 		this.instrucoes = instrucoes;
 	}
 	
@@ -207,7 +207,7 @@ public synchronized void interpretarInstrucao(){
 	public double cpi() {
 		double cont=0;
 		int instMem=0;
-		for(InstrucaoNeander i : this.instrucoes){
+		for(InstrucaoZumbi i : this.instrucoes){
 			
 			//System.out.println("Instrução:" + i.getCodigo().name());
 			
@@ -221,7 +221,7 @@ public synchronized void interpretarInstrucao(){
 		return cont/(this.instrucoes.size()-instMem);
 	}
 
-	private int quantCicloDaInstrucao(InstrucaoNeander i) {
+	private int quantCicloDaInstrucao(InstrucaoZumbi i) {
 		switch(i.getCodigo()){
 			case STA:
 			case LDA:

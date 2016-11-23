@@ -1,12 +1,12 @@
-package util;
+package pipeline;
 
-import neander.ProcessadorNeander;
+import zumbi.ProcessadorZumbi;
 
 public class Executar extends Thread{
 
-	ProcessadorNeander pN;
+	ProcessadorZumbi pN;
 	
-	public Executar(ProcessadorNeander nPN){
+	public Executar(ProcessadorZumbi nPN){
 		pN = nPN;
 	}
 	

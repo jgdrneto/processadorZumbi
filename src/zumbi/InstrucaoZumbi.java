@@ -1,8 +1,8 @@
-package neander;
+package zumbi;
 
 import modelo.Instrucao;
 
-public class InstrucaoNeander extends Instrucao{
+public class InstrucaoZumbi extends Instrucao{
 	public enum CodNeander{
 		MEM,
 		SUB,
@@ -23,15 +23,15 @@ public class InstrucaoNeander extends Instrucao{
 	
 	CodNeander codigo;
 	
-	public InstrucaoNeander() {
+	public InstrucaoZumbi() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public InstrucaoNeander(CodNeander nCodigo) {
+	public InstrucaoZumbi(CodNeander nCodigo) {
 		// TODO Auto-generated constructor stub
 		codigo = nCodigo;
 	}
-	public InstrucaoNeander(CodNeander nCodigo, int endereco) {
+	public InstrucaoZumbi(CodNeander nCodigo, int endereco) {
 		// TODO Auto-generated constructor stub
 		codigo = nCodigo;
 	}

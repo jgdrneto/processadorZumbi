@@ -1,16 +1,16 @@
-package neander;
+package zumbi;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Interpretador;
-import neander.InstrucaoNeander.CodNeander;
+import zumbi.InstrucaoZumbi.CodNeander;
 
-public class InterpretadorNeander extends Interpretador {
+public class InterpretadorZumbi extends Interpretador {
 
-	private List<InstrucaoNeander> instrucoes;
+	private List<InstrucaoZumbi> instrucoes;
 
-	public InterpretadorNeander(String nomeDoArquivo) {
+	public InterpretadorZumbi(String nomeDoArquivo) {
 		super(nomeDoArquivo);
 		/*
 		for(int i=0;i<this.getListaStrings().size();i++){
@@ -26,7 +26,7 @@ public class InterpretadorNeander extends Interpretador {
 
 	public void analiseSemantica() {
 
-		instrucoes = new ArrayList<InstrucaoNeander>();
+		instrucoes = new ArrayList<InstrucaoZumbi>();
 
 		for (int i = 0; i < this.getListaStrings().size(); i++) {
 
@@ -37,9 +37,9 @@ public class InterpretadorNeander extends Interpretador {
 		}
 	}
 
-	private InstrucaoNeander construirInstrucao(List<String> list) {
+	private InstrucaoZumbi construirInstrucao(List<String> list) {
 
-		InstrucaoNeander n = new InstrucaoNeander();
+		InstrucaoZumbi n = new InstrucaoZumbi();
 
 		for(CodNeander c : CodNeander.values()){
 			if(c.name().equals(list.get(0))){
@@ -67,7 +67,7 @@ public class InterpretadorNeander extends Interpretador {
 		return n;
 	}
 
-	public List<InstrucaoNeander> getInstrucoes() {
+	public List<InstrucaoZumbi> getInstrucoes() {
 		return instrucoes;
 	}
 
